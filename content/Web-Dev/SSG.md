@@ -2,88 +2,701 @@
 title: "سایت‌سازهای ایستا"
 draft: false
 tags:
-  - آموزش
+  - برنامه‌نویسی
+  - توسعه وب
+  - SSG
 ---
 
-# ✨ آشنایی با مولدهای سایت ایستا (SSG) و مزایای آن‌ها
+# 🌐 سایت‌سازهای ایستا (SSG)
 
-وب‌سایت‌ها به روش‌های مختلفی ساخته می‌شوند. یکی از رویکردهای مدرن و محبوب، استفاده از "مولدهای سایت ایستا" یا SSG (Static Site Generator) است. اما SSG چیست و چرا ممکن است گزینه مناسبی برای پروژه بعدی شما باشد؟
+سایت‌سازهای ایستا (Static Site Generators) یکی از محبوب‌ترین روش‌های ساخت وب‌سایت‌های مدرن هستند. در این مقاله، به طور کامل با این ابزارها آشنا می‌شویم.
 
-## مولد سایت ایستا چیست؟
+## فهرست مطالب
 
-یک مولد سایت ایستا ابزاری است که فایل‌های HTML، CSS و جاوااسکریپت وب‌سایت شما را *قبل از* اینکه کاربری از سایت بازدید کند، می‌سازد (در "زمان ساخت" یا build time). نتیجه، مجموعه‌ای از فایل‌های ایستا است که می‌توانند مستقیماً روی یک سرور وب ساده یا یک سرویس میزبانی فایل ایستا (مانند GitHub Pages، Netlify، Vercel) قرار گیرند.
+- [SSG چیست؟](#ssg-چیست)
+- [نحوه عملکرد](#نحوه-عملکرد)
+- [مزایای SSG](#مزایای-ssg)
+- [مقایسه با سایر روش‌ها](#مقایسه-با-سایر-روش‌ها)
+- [SSG‌های محبوب](#ssgهای-محبوب)
+- [کدام SSG انتخاب کنیم؟](#کدام-ssg-انتخاب-کنیم)
 
-این برخلاف سایت‌های پویا (مانند وردپرس بدون کشینگ قوی) است که در آن‌ها صفحات وب در پاسخ به درخواست هر کاربر، با استفاده از یک پایگاه داده و زبان برنامه‌نویسی سمت سرور، در لحظه تولید می‌شوند.
+## SSG چیست؟
 
-## چطور کار می‌کنند؟ (به طور خلاصه)
+یک سایت‌ساز ایستا (Static Site Generator) ابزاری است که فایل‌های HTML، CSS و جاوااسکریپت وب‌سایت شما را **قبل از** اینکه کاربری از سایت بازدید کند، می‌سازد (در زمان ساخت یا build time).
 
-معمولاً فرآیند به این صورت است:
+### 📌 تعریف دقیق
 
-1.  **محتوا:** شما محتوای خود را در فایل‌های متنی ساده (اغلب با فرمت مارک‌داون) می‌نویسید.
-2.  **قالب‌ها (Templates):** شما ساختار و ظاهر صفحات خود را با استفاده از قالب‌ها تعریف می‌کنید.
-3.  **فرآیند ساخت (Build):** مولد سایت ایستا، محتوای شما را با قالب‌ها ترکیب کرده و فایل‌های HTML نهایی را تولید می‌کند.
+```typescript
+interface StaticSiteGenerator {
+  // فایل‌های ورودی
+  input: {
+    content: string[]  // فایل‌های مارک‌داون
+    templates: string[] // فایل‌های قالب
+    assets: string[]   // تصاویر، استایل‌ها و...
+  }
 
-## مزایای کلیدی SSG ها ⚡🔒📈
+  // فرآیند ساخت
+  build: () => {
+    // ترکیب محتوا با قالب‌ها
+    const pages = combine(content, templates)
 
-*   **سرعت فوق‌العاده (Speed):** از آنجایی که صفحات از قبل ساخته شده‌اند، به سرعت برق به کاربران تحویل داده می‌شوند. نیازی به پردازش سمت سرور یا پرس‌وجو از پایگاه داده در هر درخواست نیست.
-*   **امنیت بالا (Security):** با حذف پایگاه داده و کدنویسی پیچیده سمت سرور، سطح حمله به طور قابل توجهی کاهش می‌یابد. آسیب‌پذیری‌های رایج سایت‌های پویا در اینجا کمتر مطرح هستند.
-*   **مقیاس‌پذیری و هزینه کم (Scalability & Cost):** فایل‌های ایستا به راحتی از طریق شبکه‌های توزیع محتوا (CDN) در سراسر جهان توزیع می‌شوند و می‌توانند ترافیک بسیار بالایی را با هزینه کم مدیریت کنند.
-*   **سادگی برای توسعه‌دهندگان (Developer Simplicity):** فرآیندهای توسعه و استقرار (deployment) اغلب ساده‌تر هستند. کنترل نسخه با ابزارهایی مانند Git آسان است.
-*   **تجربه کاربری بهتر (Better User Experience):** سرعت بارگذاری بالا مستقیماً به رضایت بیشتر کاربران منجر می‌شود.
+    // تولید فایل‌های HTML نهایی
+    return pages.map(page => ({
+      html: generateHTML(page),
+      css: processCSS(page.styles),
+      js: processJS(page.scripts)
+    }))
+  }
 
-## چند نمونه محبوب SSG 🚀
+  // خروجی نهایی
+  output: StaticFiles
+}
+```
 
-*   **Jekyll:** یکی از اولین‌ها، ساخته شده با Ruby، قدرت‌بخش GitHub Pages.
-*   **Hugo:** بسیار سریع، نوشته شده با Go.
-*   **Eleventy (11ty):** انعطاف‌پذیر و مدرن، با تمرکز بر سادگی.
-*   **Next.js / Gatsby:** اگرچه می‌توانند سایت‌های پیچیده‌تری بسازند، اما قابلیت تولید سایت‌های ایستا را هم به خوبی ارائه می‌دهند (اغلب برای برنامه‌های مبتنی بر React استفاده می‌شوند).
-*   **Quartz:** یک SSG عالی برای تبدیل یادداشت‌های Obsidian شما به یک وب‌سایت زیبا!
+> [!info] نکته مهم
+- برخلاف سایت‌های پویا، در SSG هیچ پایگاه داده یا کد سمت سرور در زمان اجرا وجود ندارد.
 
-## چه زمانی SSG انتخاب خوبی است؟ 👍
+## نحوه عملکرد
 
-SSG ها برای وبلاگ‌ها، سایت‌های نمونه کار (Portfolio)، سایت‌های اسناد و مدارک (Documentation)، بروشورهای آنلاین و هر وب‌سایتی که محتوای آن به طور مکرر و در لحظه توسط کاربران تغییر نمی‌کند، گزینه‌ای عالی هستند.
+### 🔄 چرخه کاری معمول
 
-اگر به دنبال سرعت، امنیت و سادگی هستید، قطعاً ارزش دارد که مولدهای سایت ایستا را برای پروژه بعدی خود بررسی کنید! 💡
+```mermaid
+graph LR
+    A[نوشتن محتوا] --> B[پردازش توسط SSG]
+    B --> C[تولید HTML]
+    C --> D[استقرار روی سرور]
+    D --> E[دسترسی کاربر]
+```
+
+### 📝 مراحل دقیق
+
+1. **نوشتن محتوا:** شما محتوای خود را در فایل‌های مارک‌داون می‌نویسید
+2. **پردازش:** SSG محتوا را با قالب‌ها ترکیب می‌کند
+3. **تولید فایل‌ها:** فایل‌های HTML/CSS/JS نهایی تولید می‌شوند
+4. **استقرار:** فایل‌ها روی سرور منتشر می‌شوند
+5. **دسترسی:** کاربران به سرعت بالا به محتوا دسترسی دارند
+
+## مزایای SSG
+
+### ⚡ سرعت فوق‌العاده
+
+از آنجایی که صفحات از قبل ساخته شده‌اند:
+
+- نیازی به پردازش سمت سرور نیست
+- پایگاه داده پرس‌وجو نمی‌شود
+- فقط فایل‌ها به کاربر تحویل داده می‌شوند
+
+```javascript
+// مقایسه زمان پاسخ‌دهی (میلی‌ثانیه)
+const responseTime = {
+  staticSite: 10,      // SSG
+  dynamicSite: 200,    // بدون کش
+  dynamicWithCache: 50  // با کش
+}
+```
+
+### 🔒 امنیت بالا
+
+- حذف پایگاه داده = کاهش سطح حمله
+- بدون کد سمت سرور پیچیده
+- آسیب‌پذیری‌های کمتر
+
+| تهدید | سایت پویا | SSG |
+|------|-----------|-----|
+| SQL Injection | ⚠️ خطر | ✅ ایمن |
+| XSS | ⚠️ خطر | ⚠️ خطر کم |
+| CSRF | ⚠️ خطر | ✅ ایمن |
+
+### 💰 مقیاس‌پذیری و هزینه کم
+
+```javascript
+const hostingCost = {
+  staticSite: 0,      // رایگان (GitHub Pages)
+  dynamicSmall: 10,    // $10/ماه
+  dynamicLarge: 1000,  // $1000/ماه
+  staticWithCDN: 0     // رایگان (Netlify, Vercel)
+}
+```
+
+### 🎨 توسعه آسان
+
+- کنترل نسخه با Git آسان است
+- بدون نیاز به دپلوی پیچیده
+- تست کردن ساده‌تر است
+- محیط توسعه ساده
+
+## مقایسه با سایر روش‌ها
+
+### 📊 جدول مقایسه
+
+| ویژگی | SSG | CMS | SPA |
+|-------|-----|-----|-----|
+| سرعت | ⚡⚡⚡ | ⚡ | ⚡⚡ |
+| امنیت | 🔒🔒🔒 | 🔒 | 🔒🔒 |
+| سئو | ✅✅✅ | ✅ | ⚠️ |
+| هزینه | 💚💚💚 | 💚💚 | 💚💚 |
+| دینامیک بودن | ⚠️ | ✅✅✅ | ✅✅ |
+| پیچیدگی | 💚💚 | 💚 | 💚💚💚 |
+
+### 💡 کدام برای شما مناسب است؟
+
+```python
+def choose_method(your_needs):
+    if your_needs == "blog_or_portfolio":
+        return "SSG is perfect for you!"
+
+    elif your_needs == "ecommerce_with_dynamic_content":
+        return "Consider a CMS or hybrid approach"
+
+    elif your_needs == "complex_application":
+        return "SPA with SSR might be better"
+
+    else:
+        return "SSG is likely a good starting point"
+```
+
+## SSG‌های محبوب
+
+### 🚀 گزینه‌های پیشرو
+
+#### 1. Next.js
+```javascript
+// Next.js with SSG
+export async function getStaticProps() {
+  const posts = await getPosts()
+  return {
+    props: { posts },
+    revalidate: 60 // ISR - Incremental Static Regeneration
+  }
+}
+```
+- 🌟 محبوب‌ترین انتخاب
+- ✅ SSG + SSR + ISR
+- 🎯 مبتنی بر React
+- 📦 پکیج بزرگ اکوسیستم
+
+#### 2. Gatsby
+```javascript
+// Gatsby data fetching
+export const query = graphql`
+  query {
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
+          }
+        }
+      }
+    }
+  }
+`
+```
+- 🌿 مبتنی بر React
+- 📊 GraphQL داخلی
+- 🖼️ بهینه‌سازی تصاویر خودکار
+- 🔌 پلاگین‌های غنی
+
+#### 3. Hugo
+```yaml
+# Hugo config
+baseURL: "https://example.com"
+languageCode: "fa"
+theme: "your-theme"
+```
+- ⚡ سریع‌ترین SSG
+- 🚀 مبتنی بر Go
+- 📝 مارک‌داون پیش‌فرض
+- 🎚️ تنظیمات ساده
+
+#### 4. Jekyll
+```yaml
+# Jekyll frontmatter
+---
+title: "My Post"
+date: 2024-01-01
+tags: [web, programming]
+---
+```
+- 💎 پشتیبانی GitHub Pages
+- 💎 مبتنی بر Ruby
+- 📝 ساده برای شروع
+- 🌐 جامعه بزرگ
+
+#### 5. 11ty (Eleventy)
+```javascript
+// Eleventy config
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy('./src/assets')
+  return {
+    dir: {
+      input: 'src',
+      output: 'public'
+    }
+  }
+}
+```
+- 🎚️ بسیار انعطاف‌پذیر
+- ⚙️ مبتنی بر Node.js
+- 📚 ساده و سبک
+- 🔄 قابلیت استفاده با هر تمپلیت
+
+### 🌟 Quartz (این وبلاگ!)
+
+```javascript
+// Quartz config
+const config = {
+  pageTitle: "بلاگ من",
+  theme: {
+    typography: {
+      header: "Vazirmatn",
+      body: "Vazirmatn"
+    },
+    colors: colorPalettes.persianAzure
+  }
+}
+```
+
+- 📚 مخصوص یادداشت‌های Obsidian
+- 🎨 طراحی زیبا
+- 🌐 پشتیبانی از زبان فارسی
+- 🔍 جستجوی قدرتمند
+- 📊 گراف ارتباطی
+
+> [!tip] نکته مهم
+- این وبلاگ دقیقاً با Quartz ساخته شده است!
+
+## کدام SSG انتخاب کنیم؟
+
+### 🎯 راهنمای انتخاب
+
+```mermaid
+graph TD
+    A[شروع] --> B{نوع پروژه}
+    B -->|وبلاگ ساده| C[Jekyll/Hugo]
+    B -->|اپلیکیشن React| D[Next.js]
+    B -->|سایت پیچیده| E[Gatsby]
+    B -->|یادداشت‌های Obsidian| F[Quartz]
+
+    C --> G{آشنایی با برنامه‌نویسی}
+    D --> G
+    E --> G
+    F --> G
+
+    G -->|تازه‌کار| H[Jekyll/Quartz]
+    G -->|با تجربه| I[Next.js/Gatsby]
+```
+
+### ✅ چک‌لیست انتخاب
+
+- [ ] آیا با React آشنایی دارید؟ → Next.js/Gatsby
+- [ ] آیا می‌خواهید یادداشت‌های Obsidian را منتشر کنید؟ → Quartz
+- [ ] آیا می‌خواهید سریع‌ترین راه را بروید؟ → Hugo
+- [ ] آیا از GitHub Pages استفاده می‌کنید؟ → Jekyll
+- [ ] آیا انعطاف‌پذیری می‌خواهید؟ → 11ty
+
+## مثال عملی: ساخت وبلاگ با SSG
+
+### 📝 ساخت وبلاگ شخصی
+
+```bash
+# شروع با Next.js
+npx create-next-app my-blog
+cd my-blog
+npm run dev
+
+# یا با Hugo
+hugo new site my-blog
+cd my-blog
+hugo server -D
+
+# یا با Quartz
+git clone https://github.com/jackyzha0/quartz
+cd quartz
+npm i
+npx quartz build
+```
+
+### 🎨 اضافه کردن محتوا
+
+```markdown
+---
+title: "اولین پست من"
+date: 2024-01-15
+tags: [یادگیری, برنامه‌نویسی]
+---
+
+# سلام دنیا!
+
+این اولین پست وبلاگ من است که با SSG ساخته شده است.
+```
+
+### 🚀 استقرار
+
+```bash
+# برای Next.js
+npm run build
+netlify deploy --prod
+
+# برای Hugo
+hugo
+netlify deploy --prod
+
+# برای Quartz
+npx quartz build
+npx quartz serve
+```
 
 ---
+
+> [!quote] نقل قول
+- سرعت ساده، ساده زیباست! - اصل طراحی
+
 ---
 
-# ✨ Understanding Static Site Generators (SSGs) and Their Benefits
+# 🌐 Static Site Generators (SSG)
 
-Websites are built in various ways. One modern and popular approach is using "Static Site Generators" or SSGs. But what is an SSG, and why might it be the right choice for your next project?
+Static Site Generators are one of the most popular methods for building modern websites. In this article, we'll thoroughly explore these tools.
 
-## What is a Static Site Generator?
+## Table of Contents
 
-A Static Site Generator is a tool that builds your website's HTML, CSS, and JavaScript files *before* any user visits the site (at "build time"). The result is a collection of static files that can be directly served from a simple web server or a static file hosting service (like GitHub Pages, Netlify, Vercel).
+- [What is an SSG?](#what-is-an-ssg)
+- [How It Works](#how-it-works)
+- [Advantages of SSG](#advantages-of-ssg)
+- [Comparison with Other Methods](#comparison-with-other-methods)
+- [Popular SSGs](#popular-ssgs)
+- [Which SSG to Choose?](#which-ssg-to-choose)
 
-This contrasts with dynamic sites (like WordPress without robust caching) where web pages are generated on-the-fly in response to each user request, typically involving a database and server-side programming.
+## What is an SSG?
 
-## How Do They Work? (Briefly)
+A Static Site Generator is a tool that builds your website's HTML, CSS, and JavaScript files **before** any user visits the site (at build time).
 
-The process usually looks like this:
+### 📌 Precise Definition
 
-1.  **Content:** You write your content in plain text files (often using Markdown format).
-2.  **Templates:** You define the structure and appearance of your pages using templates.
-3.  **Build Process:** The SSG combines your content with the templates and generates the final HTML files.
+```typescript
+interface StaticSiteGenerator {
+  // Input files
+  input: {
+    content: string[]  // Markdown files
+    templates: string[] // Template files
+    assets: string[]   // Images, styles, etc.
+  }
 
-## Key Advantages of SSGs ⚡🔒📈
+  // Build process
+  build: () => {
+    // Combine content with templates
+    const pages = combine(content, templates)
 
-*   **Blazing Speed:** Since pages are pre-built, they are delivered to users incredibly fast. No server-side processing or database queries are needed per request.
-*   **High Security:** By eliminating databases and complex server-side code, the attack surface is significantly reduced. Common vulnerabilities of dynamic sites are less of a concern here.
-*   **Scalability & Low Cost:** Static files are easily distributed via Content Delivery Networks (CDNs) worldwide and can handle very high traffic at a low cost.
-*   **Developer Simplicity:** Development and deployment processes are often simpler. Version control with tools like Git is straightforward.
-*   **Better User Experience:** Fast loading times directly contribute to higher user satisfaction.
+    // Generate final HTML files
+    return pages.map(page => ({
+      html: generateHTML(page),
+      css: processCSS(page.styles),
+      js: processJS(page.scripts)
+    }))
+  }
 
-## Some Popular SSG Examples 🚀
+  // Final output
+  output: StaticFiles
+}
+```
 
-*   **Jekyll:** One of the originals, built with Ruby, powers GitHub Pages.
-*   **Hugo:** Extremely fast, written in Go.
-*   **Eleventy (11ty):** Flexible and modern, with a focus on simplicity.
-*   **Next.js / Gatsby:** While capable of building more complex sites, they also offer excellent static site generation capabilities (often used for React-based applications).
-*   **Quartz:** A great SSG for turning your Obsidian notes into a beautiful website!
+> [!info] Important Note
+- Unlike dynamic sites, SSGs have no database or server-side code at runtime.
 
-## When is an SSG a Good Choice? 👍
+## How It Works
 
-SSGs are an excellent option for blogs, portfolio sites, documentation sites, online brochures, and any website where the content doesn't change frequently and dynamically based on user input in real-time.
+### 🔄 Typical Workflow
 
-If you're looking for speed, security, and simplicity, it's definitely worth exploring Static Site Generators for your next project! 💡
+```mermaid
+graph LR
+    A[Write Content] --> B[Process by SSG]
+    B --> C[Generate HTML]
+    C --> D[Deploy to Server]
+    D --> E[User Access]
+```
+
+### 📝 Detailed Steps
+
+1. **Write Content:** You write your content in Markdown files
+2. **Processing:** SSG combines content with templates
+3. **Generate Files:** Final HTML/CSS/JS files are generated
+4. **Deploy:** Files are published to server
+5. **Access:** Users access content at high speed
+
+## Advantages of SSG
+
+### ⚡ Blazing Speed
+
+Since pages are pre-built:
+
+- No server-side processing needed
+- No database queries
+- Just delivering files to users
+
+```javascript
+// Response time comparison (milliseconds)
+const responseTime = {
+  staticSite: 10,      // SSG
+  dynamicSite: 200,    // Without cache
+  dynamicWithCache: 50  // With cache
+}
+```
+
+### 🔒 High Security
+
+- Removing database = reduced attack surface
+- No complex server-side code
+- Fewer vulnerabilities
+
+| Threat | Dynamic Site | SSG |
+|--------|-------------|-----|
+| SQL Injection | ⚠️ Risk | ✅ Secure |
+| XSS | ⚠️ Risk | ⚠️ Low Risk |
+| CSRF | ⚠️ Risk | ✅ Secure |
+
+### 💰 Scalability & Low Cost
+
+```javascript
+const hostingCost = {
+  staticSite: 0,      // Free (GitHub Pages)
+  dynamicSmall: 10,    // $10/month
+  dynamicLarge: 1000,  // $1000/month
+  staticWithCDN: 0     // Free (Netlify, Vercel)
+}
+```
+
+### 🎨 Easy Development
+
+- Easy version control with Git
+- No need for complex deployment
+- Easier testing
+- Simple development environment
+
+## Comparison with Other Methods
+
+### 📊 Comparison Table
+
+| Feature | SSG | CMS | SPA |
+|---------|-----|-----|-----|
+| Speed | ⚡⚡⚡ | ⚡ | ⚡⚡ |
+| Security | 🔒🔒🔒 | 🔒 | 🔒🔒 |
+| SEO | ✅✅✅ | ✅ | ⚠️ |
+| Cost | 💚💚💚 | 💚💚 | 💚💚 |
+| Dynamic | ⚠️ | ✅✅✅ | ✅✅ |
+| Complexity | 💚💚 | 💚 | 💚💚💚 |
+
+### 💡 Which is Right for You?
+
+```python
+def choose_method(your_needs):
+    if your_needs == "blog_or_portfolio":
+        return "SSG is perfect for you!"
+
+    elif your_needs == "ecommerce_with_dynamic_content":
+        return "Consider a CMS or hybrid approach"
+
+    elif your_needs == "complex_application":
+        return "SPA with SSR might be better"
+
+    else:
+        return "SSG is likely a good starting point"
+```
+
+## Popular SSGs
+
+### 🚀 Leading Options
+
+#### 1. Next.js
+```javascript
+// Next.js with SSG
+export async function getStaticProps() {
+  const posts = await getPosts()
+  return {
+    props: { posts },
+    revalidate: 60 // ISR - Incremental Static Regeneration
+  }
+}
+```
+- 🌟 Most popular choice
+- ✅ SSG + SSR + ISR
+- 🎯 React-based
+- 📦 Large package ecosystem
+
+#### 2. Gatsby
+```javascript
+// Gatsby data fetching
+export const query = graphql`
+  query {
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
+          }
+        }
+      }
+    }
+  }
+`
+```
+- 🌿 React-based
+- 📊 Internal GraphQL
+- 🖼️ Automatic image optimization
+- 🔌 Rich plugins
+
+#### 3. Hugo
+```yaml
+# Hugo config
+baseURL: "https://example.com"
+languageCode: "fa"
+theme: "your-theme"
+```
+- ⚡ Fastest SSG
+- 🚀 Go-based
+- 📝 Default Markdown
+- 🎚️ Simple configuration
+
+#### 4. Jekyll
+```yaml
+# Jekyll frontmatter
+---
+title: "My Post"
+date: 2024-01-01
+tags: [web, programming]
+---
+```
+- 💎 GitHub Pages support
+- 💎 Ruby-based
+- 📝 Simple to start
+- 🌐 Large community
+
+#### 5. 11ty (Eleventy)
+```javascript
+// Eleventy config
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy('./src/assets')
+  return {
+    dir: {
+      input: 'src',
+      output: 'public'
+    }
+  }
+}
+```
+- 🎚️ Very flexible
+- ⚙️ Node.js-based
+- 📚 Simple and lightweight
+- 🔄 Works with any template
+
+### 🌟 Quartz (This Blog!)
+
+```javascript
+// Quartz config
+const config = {
+  pageTitle: "My Blog",
+  theme: {
+    typography: {
+      header: "Vazirmatn",
+      body: "Vazirmatn"
+    },
+    colors: colorPalettes.persianAzure
+  }
+}
+```
+
+- 📚 Dedicated to Obsidian notes
+- 🎨 Beautiful design
+- 🌐 Persian language support
+- 🔍 Powerful search
+- 📊 Connection graph
+
+> [!tip] Important Note
+- This blog is built exactly with Quartz!
+
+## Which SSG to Choose?
+
+### 🎯 Selection Guide
+
+```mermaid
+graph TD
+    A[Start] --> B{Project Type}
+    B -->|Simple Blog| C[Jekyll/Hugo]
+    B -->|React App| D[Next.js]
+    B -->|Complex Site| E[Gatsby]
+    B -->|Obsidian Notes| F[Quartz]
+
+    C --> G{Programming Knowledge}
+    D --> G
+    E --> G
+    F --> G
+
+    G -->|Beginner| H[Jekyll/Quartz]
+    G -->|Experienced| I[Next.js/Gatsby]
+```
+
+### ✅ Selection Checklist
+
+- [ ] Are you familiar with React? → Next.js/Gatsby
+- [ ] Do you want to publish Obsidian notes? → Quartz
+- [ ] Do you want the fastest route? → Hugo
+- [ ] Do you use GitHub Pages? → Jekyll
+- [ ] Do you want flexibility? → 11ty
+
+## Practical Example: Building a Blog with SSG
+
+### 📝 Building a Personal Blog
+
+```bash
+# Start with Next.js
+npx create-next-app my-blog
+cd my-blog
+npm run dev
+
+# Or with Hugo
+hugo new site my-blog
+cd my-blog
+hugo server -D
+
+# Or with Quartz
+git clone https://github.com/jackyzha0/quartz
+cd quartz
+npm i
+npx quartz build
+```
+
+### 🎨 Adding Content
+
+```markdown
+---
+title: "My First Post"
+date: 2024-01-15
+tags: [learning, programming]
+---
+
+# Hello World!
+
+This is my first blog post built with SSG.
+```
+
+### 🚀 Deployment
+
+```bash
+# For Next.js
+npm run build
+netlify deploy --prod
+
+# For Hugo
+hugo
+netlify deploy --prod
+
+# For Quartz
+npx quartz build
+npx quartz serve
+```
+
+---
+
+> [!quote] Quote
+- Simplicity is the ultimate sophistication - Leonardo da Vinci

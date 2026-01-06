@@ -1,120 +1,178 @@
 ---
 title: "سلام دنیا"
 draft: false
+tags:
+  - درباره من
+  - معرفی
 ---
 
 <center><b>اول دفتر به نام ایزد دانا...</b></center>
 
-> 📢 **توجه:** این یک متن نمونه برای صفحه اول وبلاگ شماست. لطفاً آن را با محتوای واقعی خود ویرایش و جایگزین کنید! باشه؟؟؟
-
-![[attachment/image.jpg]]
+> [!important] توجه
+> این یک وبلاگ شخصی است که با استفاده از Quartz ساخته شده است. در اینجا افکار، یادداشت‌ها و دانش خود را به اشتراک می‌گذارم.
 
 # به وبلاگ من خوش آمدید! 👋
 
-اینجا فضای دنج من در اینترنت است. جایی برای به اشتراک گذاشتن افکار، آموخته‌ها و شاید چند داستان جالب!
+سلام! من اینجا هستم تا دانش خود را با شما به اشتراک بگذارم. این فضای شخصی من است که در آن یادداشت‌های روزمره، آموخته‌های ارزشمند و ایده‌های جالب را ثبت می‌کنم.
 
-## دربارهٔ این وبلاگ 📝
+## درباره من 👤
 
-در این وبلاگ، قصد دارم به ==موضوعات زیر== بپردازم:
+من یک برنامه‌نویس و یادگیرنده علاقه‌مند به به اشتراک گذاشتن دانش هستم. این وبلاگ فضای شخصی من است که در آن:
 
-*   **[موضوع اصلی اول شما]:** برای مثال: "کاوش در دنیای *برنامه‌نویسی فرانت‌اند* 💻 با استفاده از `Vue.js` و `Nuxt`."
-    *   *توضیح:* در اینجا، عمیقاً به جنبه‌های مختلف فرانت‌اند، از HTML/CSS پایه‌ای تا فریم‌ورک‌های پیشرفته جاوااسکریپت می‌پردازم. نگاهی خواهیم داشت به ~~تکنیک‌های قدیمی~~ **بهترین شیوه‌های مدرن**.
-*   **[موضوع اصلی دوم شما]:** برای مثال: "سفرهای ماجراجویانه و _طبیعت‌گردی_ 🏞️"
-    *   *توضیح:* من داستان‌های سفر هیجان‌انگیز، نکات کاربردی برای ماجراجویان دیگر، و بررسی‌های صادقانه از تجهیزاتی که آزمایش کرده‌ام را به اشتراک خواهم گذاشت. شاید حتی یک <u>راهنمای کوچک</u> برای بسته‌بندی مینیمالیستی! آخرین بررسی من در مورد [کوله‌پشتی فوق‌العاده نسخه ۳](https://example.com/awesome-backpack-review-fa) را ببینید.
-*   **[هر موضوع دیگری که دوست دارید]:** برای مثال: "بررسی جدیدترین کتاب‌ها و فیلم‌ها 📚🎬"
-    *   *توضیح:* فضا برای خلاقیت شما باز است! انتظار داشته باشید نظرات *بسیار شخصی* من را در مورد همه چیز، از فیلم‌های مستقل گرفته تا رمان‌های پرفروش، ببینید.
+- 📚 **نوشتن** درباره موضوعات مورد علاقه‌ام
+- 💻 **مستندسازی** پروژه‌ها و یادگیری‌ها
+- 🌱 **رشد** و توسعه شخصی
 
-به عنوان مثال، یک «سلام دنیا» ساده در پایتون:
+## موضوعات مطرح شده 📝
+
+در این وبلاگ به موضوعات مختلفی می‌پردازم:
+
+### برنامه‌نویسی و توسعه وب 💻
+- آموزش‌های برنامه‌نویسی
+- بررسی ابزارها و فریم‌ورک‌ها
+- بهترین شیوه‌های کدنویسی
+
+### مدیریت دانش شخصی 🧠
+- روش‌های یادداشت‌برداری
+- سازماندهی اطلاعات
+- بهبود بهره‌وری
+
+### سایر موضوعات 🌟
+- نقد و بررسی
+- تجربه‌های شخصی
+- ایده‌های خلاقانه
+
+> [!tip] نکته
+> برای دسترسی سریع به بخش‌های مختلف، از منوی کناری یا صفحه جستجو استفاده کنید.
+
+## آخرین نوشته‌ها 📰
+
+برای دیدن آخرین مقالات و یادداشت‌ها، می‌توانید به بخش‌های زیر مراجعه کنید:
+
+- [[PKM]] - مدیریت دانش شخصی
+- [[Web-Dev/SSG|SSG]] - سایت‌سازهای ایستا
+
+## مثال کد 🖥️
+
+در اینجا یک نمونه کد پایتون برای خوش‌آمدگویی:
 
 ```python
-# main.py
-def greet_fa(name):
-  return f"سلام، {name}! به نمونه‌های GFM خوش آمدید."
-print(greet_fa("توسعه‌دهنده"))
+# خوش‌آمدگویی ساده
+def hello_world(name: str) -> str:
+    return f"سلام {name}! به وبلاگ من خوش آمدید."
+
+print(hello_world("دوست"))
 ```
 
-نگاهی سریع به برخی از انواع محتوای برنامه‌ریزی شده:
+## جدول مقایسه 📊
 
-| دسته‌بندی        | تناوب     | موضوع نمونه                      |
-|-----------------|-----------|----------------------------------|
-| آموزش‌ها        | هفتگی     | ساخت یک اپلیکیشن لیست کار با `FastAPI` |
-| سفرنامه‌ها      | ماهانه    | پیاده‌روی در مسیر دماوند          |
-| نقد و بررسی‌ها   | دوهفته‌یکبار | نظرات من درباره فیلم «قهرمان»   |
+| ویژگی | وبلاگ شخصی | شبکه اجتماعی |
+|-------|-----------|--------------|
+| کنترل کامل | ✅ | ❌ |
+| مالکیت داده‌ها | ✅ | ❌ |
+| سفارشی‌سازی | ✅ | محدود |
+| تعامل با کاربران | متوسط | زیاد |
 
-و برخی از ویژگی‌هایی که برای خود وبلاگ برنامه‌ریزی کرده‌ام:
+## لیست کارها ✅
 
-- [x] پشتیبانی از مارک‌داون پایه
-- [x] کال‌اوت‌های پیشرفته GFM
-- [ ] قطعه کدهای تعاملی
-- [ ] بهبود سیستم نظرات کاربران
-- [ ] ~~شاید یک انجمن گفتگو~~ (فعلاً از آن صرف‌نظر کردم، تمرکز بر محتواست!)
+چند مورد که به تازگی انجام داده‌ام یا قصد دارم انجام دهم:
 
-مطالب سایت: [[PKM]]، [[SSG]]
-
-## چرا این وبلاگ را ساختم؟ 🤔
-
-هدف من از ایجاد این فضا، به اشتراک گذاشتن دانش، ~~یک شبه میلیونر شدن~~ ساختن یک جامعه کوچک، مستندسازی *یادگیری‌های شخصی‌ام*، و صرفاً برای سرگرمی و ابراز خود است. امیدوارم از خواندن مطالب لذت ببرید و شاید چیزی مفید هم در آن پیدا کنید!
-
-## با من در ارتباط باشید 📬
-
-می‌توانید نظرات خود را زیر هر پست بنویسید یا از طریق [لینک به صفحه تماس با من یا شبکه اجتماعی شما] با من در تماس باشید. بازخورد شما همیشه خوشایند است! 😊
-
-> [!tip] داخل پرانتز
-> برای سوالات فوری یا صرفاً برای سلام کردن، پیام‌های مستقیم در [پلتفرم شبکه اجتماعی، مثلاً تلگرام] معمولاً سریع‌ترین راه برای ارتباط با من است! همچنین می‌توانید صفحه [[SSG]] را برای اطلاعات بیشتر درباره مولدهای سایت ایستا بررسی کنید.
+- [x] راه‌اندازی وبلاگ با Quartz
+- [x] نوشتن اولین مقاله
+- [x] تنظیم رنگ‌بندی سایت
+- [ ] افزودن بخش نظرات
+- [ ] بهینه‌سازی سئو
+- [ ] افزودن صفحه درباره من
 
 ---
 
-> 📢 **Note:** This is placeholder text for your blog's homepage. Please edit and replace it with your actual content!
+> [!quote] نقل قول
+> دانش تنها قدرتی است که می‌تواند آن را بدون هیچ محدودیتی به اشتراک بگذارید، اما آن را گم نکنید! - ناشناس
+
+## با من در ارتباط باشید 📬
+
+نظرات شما برای من ارزشمند است. می‌توانید از بخش نظرات زیر هر مقاله با من در ارتباط باشید.
+
+---
 
 # Welcome to My Blog! 👋
 
-This is my cozy corner on the internet. A place to share thoughts, learnings, and maybe a few interesting stories!
+Hello! I'm here to share my knowledge with you. This is my personal space where I document daily notes, valuable learnings, and interesting ideas.
 
-## About This Blog 📝
+## About Me 👤
 
-In this blog, I plan to delve into the following topics:
+I am a developer and lifelong learner who loves sharing knowledge. This blog is my personal space where I:
 
-*   **[Your First Main Topic]:** For example: "Exploring the World of *Front-End Development* 💻 using `React` and `TypeScript`."
-    *   *Explanation:* Here, I'll dive deep into various aspects of front-end, from basic HTML/CSS to advanced JavaScript frameworks. We'll look at ~~old techniques~~ **modern best practices**.
-*   **[Your Second Main Topic]:** For example: "Adventure Travels and _Nature Exploration_ 🏞️"
-    *   *Explanation:* I'll share thrilling travel stories, practical tips for fellow adventurers, and honest reviews of gear I've put to the test. Perhaps even a <u>small guide</u> on minimalist packing! Check out my latest review on the [Awesome Backpack V3](https://example.com/awesome-backpack-review).
-*   **[Any Other Topic You Like]:** For example: "Reviewing the Latest Books and Movies 📚🎬"
-    *   *Explanation:* The space is open for your creativity! Expect to see my *very subjective* thoughts on everything from indie films to bestseller novels.
+- 📚 **Write** about topics I'm interested in
+- 💻 **Document** projects and learnings
+- 🌱 **Grow** and develop personally
 
-For instance, a simple "Hello World" in JavaScript:
+## Topics Covered 📝
 
-```javascript
-// main.js
-function greet(name) {
-  return `Hello, ${name}! Welcome to GFM examples.`;
-}
-console.log(greet("Developer"));
+I cover various topics in this blog:
+
+### Programming & Web Development 💻
+- Programming tutorials
+- Tools and frameworks reviews
+- Best coding practices
+
+### Personal Knowledge Management 🧠
+- Note-taking methods
+- Information organization
+- Productivity improvement
+
+### Other Topics 🌟
+- Reviews and critiques
+- Personal experiences
+- Creative ideas
+
+> [!tip] Tip
+> Use the sidebar menu or search page for quick access to different sections.
+
+## Latest Posts 📰
+
+Check out my latest articles and notes in these sections:
+
+- [[PKM]] - Personal Knowledge Management
+- [[Web-Dev/SSG|SSG]] - Static Site Generators
+
+## Code Example 🖥️
+
+Here's a simple Python code example for welcoming:
+
+```python
+# Simple greeting
+def hello_world(name: str) -> str:
+    return f"Hello {name}! Welcome to my blog."
+
+print(hello_world("friend"))
 ```
 
-Here's a quick look at some planned content types:
+## Comparison Table 📊
 
-| Category         | Frequency | Example Topic                     |
-|------------------|-----------|-----------------------------------|
-| Tutorials        | Weekly    | Building a To-Do App with `Svelte`|
-| Travelogues      | Monthly   | Hiking the Annapurna Circuit      |
-| Reviews          | Bi-weekly | My Thoughts on "Dune: Part Two"   |
+| Feature | Personal Blog | Social Media |
+|---------|---------------|--------------|
+| Full Control | ✅ | ❌ |
+| Data Ownership | ✅ | ❌ |
+| Customization | ✅ | Limited |
+| User Engagement | Medium | High |
 
-And some features I'm planning for the blog itself:
+## Todo List ✅
 
-- [x] Basic Markdown support
-- [x] Enhanced GFM callouts
-- [ ] Interactive code snippets
-- [ ] User comment system enhancement
-- [ ] ~~Maybe a forum~~ (Decided against it for now, focusing on content!)
+A few things I've done recently or plan to do:
 
-## Why I Started This Blog 🤔
+- [x] Set up blog with Quartz
+- [x] Write first article
+- [x] Configure site color scheme
+- [ ] Add comments section
+- [ ] SEO optimization
+- [ ] Add about page
 
-My goal in creating this space is to share knowledge, ~~make millions overnight~~ build a small community, document my *personal learning journey*, and simply to have fun expressing myself. I hope you enjoy reading the content and perhaps find something useful too!
+---
+
+> [!quote] Quote
+> Knowledge is the only power that you can share without any limits, but don't lose it! - Unknown
 
 ## Get in Touch 📬
 
-Feel free to leave your comments under each post or get in touch with me via [Link to your contact page or social media]. Your feedback is always welcome! 😊
-
-> [!TIP]
-> For urgent queries or just to say hi, direct messages on [Social Media Platform, e.g., Twitter] are usually the quickest way to reach me! You can also check out the [[SSG]] page for more about Static Site Generators.
-
+Your feedback is valuable to me. Feel free to leave comments under each article.
