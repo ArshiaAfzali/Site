@@ -1,0 +1,39 @@
+name: Sync with Upstream
+
+on:
+  schedule:
+    # Runs daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Fetch upstream
+        run: |
+          git fetch upstream v4
+
+      - name: Merge upstream changes
+        run: |
+          # Attempt to merge upstream/v4 into current branch
+          # This will fail if there are conflicts, which is what we want
+          git merge upstream/v4 --no-edit --no-ff
+
+      - name: Push changes
+        if: success()
+        run: |
+          git push origin HEAD
