@@ -22,7 +22,6 @@ import checkboxScript from "../../components/scripts/checkbox.inline"
 // @ts-ignore
 import mermaidScript from "../../components/scripts/mermaid.inline"
 import mermaidStyle from "../../components/styles/mermaid.inline.scss"
-import { PhrasingContent } from "mdast-util-find-and-replace/lib" 
 import { FilePath, pathToRoot, slugTag, slugifyFilePath } from "../../util/path"
 import { toHast } from "mdast-util-to-hast"
 import { toHtml } from "hast-util-to-html"
@@ -104,16 +103,17 @@ const arrowMapping: Record<string, string> = {
 
 // Add the isFarsi function here
 function isFarsi(text: string): boolean {
-  const farsiRange = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
-  const skipChars = /[\p{Emoji_Presentation}\p{Extended_Pictographic}\s\-\[\]{}\/\\#=@!*_\u200D(){}[\].,:»«]/u;
-  
+  const farsiRange = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/
+  const skipChars =
+    /[\p{Emoji_Presentation}\p{Extended_Pictographic}\s\-\[\]{}\/\\#=@!*_\u200D(){}[\].,:»«]/u
+
   for (const char of text) {
     if (skipChars.test(char)) {
-      continue;
+      continue
     }
-    return farsiRange.test(char);
+    return farsiRange.test(char)
   }
-  return false;
+  return false
 }
 
 function canonicalizeCallout(calloutName: string): keyof typeof calloutMapping {
@@ -560,19 +560,22 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
 
       plugins.push(() => {
         return (tree: HtmlRoot) => {
-          visit(tree, 'element', (node) => {
-            if (node.tagName === 'p' || /^h[1-6]$/.test(node.tagName)) {
+          visit(tree, "element", (node) => {
+            if (node.tagName === "p" || /^h[1-6]$/.test(node.tagName)) {
               const textContent = node.children
-                .map(child => {
-                  if (child.type === 'text') return child.value;
-                  if (child.type === 'element') return (child as Element).children.map(c => c.type === 'text' ? (c as Literal).value : '').join('');
-                  return '';
+                .map((child) => {
+                  if (child.type === "text") return child.value
+                  if (child.type === "element")
+                    return (child as Element).children
+                      .map((c) => (c.type === "text" ? (c as Literal).value : ""))
+                      .join("")
+                  return ""
                 })
-                .join('');
-              
+                .join("")
+
               if (textContent.length > 0) {
                 node.properties = node.properties || {}
-                node.properties.dir = isFarsi(textContent) ? 'rtl' : 'ltr'
+                node.properties.dir = isFarsi(textContent) ? "rtl" : "ltr"
               }
             }
           })

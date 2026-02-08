@@ -195,8 +195,10 @@ const colorPalettes = {
       textHighlight: "#07364288",
     },
   },
-  devDark: { // A more developer-focused dark theme, similar to common IDE themes
-    lightMode: { // Keeping a light mode variant for consistency, though less "dev-dark"
+  devDark: {
+    // A more developer-focused dark theme, similar to common IDE themes
+    lightMode: {
+      // Keeping a light mode variant for consistency, though less "dev-dark"
       light: "#f5f5f5",
       lightgray: "#e0e0e0",
       gray: "#bdbdbd",
@@ -291,7 +293,8 @@ const colorPalettes = {
       textHighlight: "#FFFF00A0",
     },
   },
-  sunset: { // Replaces sunsetVibes
+  sunset: {
+    // Replaces sunsetVibes
     lightMode: {
       light: "#FCEFCB",
       lightgray: "#FAD59A",

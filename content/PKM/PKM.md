@@ -46,11 +46,11 @@ tags:
 
 بر اساس تحقیقات:
 
-| نوع اطلاعات | فراموشی بدون یادداشت | فراموشی با یادداشت |
-|------------|---------------------|-------------------|
-| اطلاعات جدید | 70% در 24 ساعت | کمتر از 20% |
-| ایده‌های خلاقانه | 80% در یک هفته | کمتر از 10% |
-| تجربه‌های شخصی | 60% در یک ماه | کمتر از 5% |
+| نوع اطلاعات      | فراموشی بدون یادداشت | فراموشی با یادداشت |
+| ---------------- | -------------------- | ------------------ |
+| اطلاعات جدید     | 70% در 24 ساعت       | کمتر از 20%        |
+| ایده‌های خلاقانه | 80% در یک هفته       | کمتر از 10%        |
+| تجربه‌های شخصی   | 60% در یک ماه        | کمتر از 5%         |
 
 ## چهار مرحله اصلی PKM
 
@@ -118,30 +118,35 @@ tags:
 ### 🔧 ابزارهای محبوب
 
 #### 1. Obsidian
+
 - رایگان و متن‌باز
 - مبتنی بر فایل‌های متنی
 - قابلیت پیونددهی پیشرفته
 - پلاگین‌های متنوع
 
 #### 2. Notion
+
 - چندمنظوره
 - همکاری تیمی
 - قالب‌های متنوع
 - قابلیت پایگاه داده
 
 #### 3. Roam Research
+
 - مبتنی بر اتصالگراف
 - یادداشت‌های روزانه خودکار
 - نمایش شبکه ایده‌ها
 - قدرتمند برای تحقیقات
 
 #### 4. Logseq
+
 - متن‌باز
 - مبتنی بر بلاک‌چین
 - نمودار اتصالگراف
 - همگام‌سازی ابری
 
 > [!warning] هشدار
+
 - مهم‌ترین چیز، نرم‌افزار نیست؛ **عادت** است.
 - از سیستم ساده شروع کنید و به تدریج پیچیده کنید.
 
@@ -243,11 +248,11 @@ In today's world where we face an abundance of information, PKM is crucial:
 
 Based on research:
 
-| Information Type | Forgetting Without Notes | Forgetting With Notes |
-|-----------------|------------------------|---------------------|
-| New Information | 70% in 24 hours | Less than 20% |
-| Creative Ideas | 80% in a week | Less than 10% |
-| Personal Experiences | 60% in a month | Less than 5% |
+| Information Type     | Forgetting Without Notes | Forgetting With Notes |
+| -------------------- | ------------------------ | --------------------- |
+| New Information      | 70% in 24 hours          | Less than 20%         |
+| Creative Ideas       | 80% in a week            | Less than 10%         |
+| Personal Experiences | 60% in a month           | Less than 5%          |
 
 ## Four Main Stages of PKM
 
@@ -315,30 +320,35 @@ A method based on linked notes:
 ### 🔧 Popular Tools
 
 #### 1. Obsidian
+
 - Free and open source
 - Based on text files
 - Advanced linking capabilities
 - Diverse plugins
 
 #### 2. Notion
+
 - Multi-purpose
 - Team collaboration
 - Various templates
 - Database capabilities
 
 #### 3. Roam Research
+
 - Graph-based
 - Automatic daily notes
 - Idea network visualization
 - Powerful for research
 
 #### 4. Logseq
+
 - Open source
 - Based on blockchain
 - Connection graph
 - Cloud sync
 
 > [!warning] Warning
+
 - The most important thing is not the software; it's the **habit**.
 - Start with a simple system and gradually make it complex.
 

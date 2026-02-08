@@ -54,6 +54,7 @@ interface StaticSiteGenerator {
 ```
 
 > [!info] نکته مهم
+
 - برخلاف سایت‌های پویا، در SSG هیچ پایگاه داده یا کد سمت سرور در زمان اجرا وجود ندارد.
 
 ## نحوه عملکرد
@@ -89,9 +90,9 @@ graph LR
 ```javascript
 // مقایسه زمان پاسخ‌دهی (میلی‌ثانیه)
 const responseTime = {
-  staticSite: 10,      // SSG
-  dynamicSite: 200,    // بدون کش
-  dynamicWithCache: 50  // با کش
+  staticSite: 10, // SSG
+  dynamicSite: 200, // بدون کش
+  dynamicWithCache: 50, // با کش
 }
 ```
 
@@ -101,20 +102,20 @@ const responseTime = {
 - بدون کد سمت سرور پیچیده
 - آسیب‌پذیری‌های کمتر
 
-| تهدید | سایت پویا | SSG |
-|------|-----------|-----|
-| SQL Injection | ⚠️ خطر | ✅ ایمن |
-| XSS | ⚠️ خطر | ⚠️ خطر کم |
-| CSRF | ⚠️ خطر | ✅ ایمن |
+| تهدید         | سایت پویا | SSG       |
+| ------------- | --------- | --------- |
+| SQL Injection | ⚠️ خطر    | ✅ ایمن   |
+| XSS           | ⚠️ خطر    | ⚠️ خطر کم |
+| CSRF          | ⚠️ خطر    | ✅ ایمن   |
 
 ### 💰 مقیاس‌پذیری و هزینه کم
 
 ```javascript
 const hostingCost = {
-  staticSite: 0,      // رایگان (GitHub Pages)
-  dynamicSmall: 10,    // $10/ماه
-  dynamicLarge: 1000,  // $1000/ماه
-  staticWithCDN: 0     // رایگان (Netlify, Vercel)
+  staticSite: 0, // رایگان (GitHub Pages)
+  dynamicSmall: 10, // $10/ماه
+  dynamicLarge: 1000, // $1000/ماه
+  staticWithCDN: 0, // رایگان (Netlify, Vercel)
 }
 ```
 
@@ -129,14 +130,14 @@ const hostingCost = {
 
 ### 📊 جدول مقایسه
 
-| ویژگی | SSG | CMS | SPA |
-|-------|-----|-----|-----|
-| سرعت | ⚡⚡⚡ | ⚡ | ⚡⚡ |
-| امنیت | 🔒🔒🔒 | 🔒 | 🔒🔒 |
-| سئو | ✅✅✅ | ✅ | ⚠️ |
-| هزینه | 💚💚💚 | 💚💚 | 💚💚 |
-| دینامیک بودن | ⚠️ | ✅✅✅ | ✅✅ |
-| پیچیدگی | 💚💚 | 💚 | 💚💚💚 |
+| ویژگی        | SSG    | CMS    | SPA    |
+| ------------ | ------ | ------ | ------ |
+| سرعت         | ⚡⚡⚡ | ⚡     | ⚡⚡   |
+| امنیت        | 🔒🔒🔒 | 🔒     | 🔒🔒   |
+| سئو          | ✅✅✅ | ✅     | ⚠️     |
+| هزینه        | 💚💚💚 | 💚💚   | 💚💚   |
+| دینامیک بودن | ⚠️     | ✅✅✅ | ✅✅   |
+| پیچیدگی      | 💚💚   | 💚     | 💚💚💚 |
 
 ### 💡 کدام برای شما مناسب است؟
 
@@ -160,22 +161,25 @@ def choose_method(your_needs):
 ### 🚀 گزینه‌های پیشرو
 
 #### 1. Next.js
+
 ```javascript
 // Next.js with SSG
 export async function getStaticProps() {
   const posts = await getPosts()
   return {
     props: { posts },
-    revalidate: 60 // ISR - Incremental Static Regeneration
+    revalidate: 60, // ISR - Incremental Static Regeneration
   }
 }
 ```
+
 - 🌟 محبوب‌ترین انتخاب
 - ✅ SSG + SSR + ISR
 - 🎯 مبتنی بر React
 - 📦 پکیج بزرگ اکوسیستم
 
 #### 2. Gatsby
+
 ```javascript
 // Gatsby data fetching
 export const query = graphql`
@@ -193,24 +197,28 @@ export const query = graphql`
   }
 `
 ```
+
 - 🌿 مبتنی بر React
 - 📊 GraphQL داخلی
 - 🖼️ بهینه‌سازی تصاویر خودکار
 - 🔌 پلاگین‌های غنی
 
 #### 3. Hugo
+
 ```yaml
 # Hugo config
 baseURL: "https://example.com"
 languageCode: "fa"
 theme: "your-theme"
 ```
+
 - ⚡ سریع‌ترین SSG
 - 🚀 مبتنی بر Go
 - 📝 مارک‌داون پیش‌فرض
 - 🎚️ تنظیمات ساده
 
 #### 4. Jekyll
+
 ```yaml
 # Jekyll frontmatter
 ---
@@ -219,24 +227,27 @@ date: 2024-01-01
 tags: [web, programming]
 ---
 ```
+
 - 💎 پشتیبانی GitHub Pages
 - 💎 مبتنی بر Ruby
 - 📝 ساده برای شروع
 - 🌐 جامعه بزرگ
 
 #### 5. 11ty (Eleventy)
+
 ```javascript
 // Eleventy config
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy('./src/assets')
+  eleventyConfig.addPassthroughCopy("./src/assets")
   return {
     dir: {
-      input: 'src',
-      output: 'public'
-    }
+      input: "src",
+      output: "public",
+    },
   }
 }
 ```
+
 - 🎚️ بسیار انعطاف‌پذیر
 - ⚙️ مبتنی بر Node.js
 - 📚 ساده و سبک
@@ -251,10 +262,10 @@ const config = {
   theme: {
     typography: {
       header: "Vazirmatn",
-      body: "Vazirmatn"
+      body: "Vazirmatn",
     },
-    colors: colorPalettes.persianAzure
-  }
+    colors: colorPalettes.persianAzure,
+  },
 }
 ```
 
@@ -265,6 +276,7 @@ const config = {
 - 📊 گراف ارتباطی
 
 > [!tip] نکته مهم
+
 - این وبلاگ دقیقاً با Quartz ساخته شده است!
 
 ## کدام SSG انتخاب کنیم؟
@@ -351,6 +363,7 @@ npx quartz serve
 ---
 
 > [!quote] نقل قول
+
 - سرعت ساده، ساده زیباست! - اصل طراحی
 
 ---
@@ -402,6 +415,7 @@ interface StaticSiteGenerator {
 ```
 
 > [!info] Important Note
+
 - Unlike dynamic sites, SSGs have no database or server-side code at runtime.
 
 ## How It Works
@@ -437,9 +451,9 @@ Since pages are pre-built:
 ```javascript
 // Response time comparison (milliseconds)
 const responseTime = {
-  staticSite: 10,      // SSG
-  dynamicSite: 200,    // Without cache
-  dynamicWithCache: 50  // With cache
+  staticSite: 10, // SSG
+  dynamicSite: 200, // Without cache
+  dynamicWithCache: 50, // With cache
 }
 ```
 
@@ -449,20 +463,20 @@ const responseTime = {
 - No complex server-side code
 - Fewer vulnerabilities
 
-| Threat | Dynamic Site | SSG |
-|--------|-------------|-----|
-| SQL Injection | ⚠️ Risk | ✅ Secure |
-| XSS | ⚠️ Risk | ⚠️ Low Risk |
-| CSRF | ⚠️ Risk | ✅ Secure |
+| Threat        | Dynamic Site | SSG         |
+| ------------- | ------------ | ----------- |
+| SQL Injection | ⚠️ Risk      | ✅ Secure   |
+| XSS           | ⚠️ Risk      | ⚠️ Low Risk |
+| CSRF          | ⚠️ Risk      | ✅ Secure   |
 
 ### 💰 Scalability & Low Cost
 
 ```javascript
 const hostingCost = {
-  staticSite: 0,      // Free (GitHub Pages)
-  dynamicSmall: 10,    // $10/month
-  dynamicLarge: 1000,  // $1000/month
-  staticWithCDN: 0     // Free (Netlify, Vercel)
+  staticSite: 0, // Free (GitHub Pages)
+  dynamicSmall: 10, // $10/month
+  dynamicLarge: 1000, // $1000/month
+  staticWithCDN: 0, // Free (Netlify, Vercel)
 }
 ```
 
@@ -477,14 +491,14 @@ const hostingCost = {
 
 ### 📊 Comparison Table
 
-| Feature | SSG | CMS | SPA |
-|---------|-----|-----|-----|
-| Speed | ⚡⚡⚡ | ⚡ | ⚡⚡ |
-| Security | 🔒🔒🔒 | 🔒 | 🔒🔒 |
-| SEO | ✅✅✅ | ✅ | ⚠️ |
-| Cost | 💚💚💚 | 💚💚 | 💚💚 |
-| Dynamic | ⚠️ | ✅✅✅ | ✅✅ |
-| Complexity | 💚💚 | 💚 | 💚💚💚 |
+| Feature    | SSG    | CMS    | SPA    |
+| ---------- | ------ | ------ | ------ |
+| Speed      | ⚡⚡⚡ | ⚡     | ⚡⚡   |
+| Security   | 🔒🔒🔒 | 🔒     | 🔒🔒   |
+| SEO        | ✅✅✅ | ✅     | ⚠️     |
+| Cost       | 💚💚💚 | 💚💚   | 💚💚   |
+| Dynamic    | ⚠️     | ✅✅✅ | ✅✅   |
+| Complexity | 💚💚   | 💚     | 💚💚💚 |
 
 ### 💡 Which is Right for You?
 
@@ -508,22 +522,25 @@ def choose_method(your_needs):
 ### 🚀 Leading Options
 
 #### 1. Next.js
+
 ```javascript
 // Next.js with SSG
 export async function getStaticProps() {
   const posts = await getPosts()
   return {
     props: { posts },
-    revalidate: 60 // ISR - Incremental Static Regeneration
+    revalidate: 60, // ISR - Incremental Static Regeneration
   }
 }
 ```
+
 - 🌟 Most popular choice
 - ✅ SSG + SSR + ISR
 - 🎯 React-based
 - 📦 Large package ecosystem
 
 #### 2. Gatsby
+
 ```javascript
 // Gatsby data fetching
 export const query = graphql`
@@ -541,24 +558,28 @@ export const query = graphql`
   }
 `
 ```
+
 - 🌿 React-based
 - 📊 Internal GraphQL
 - 🖼️ Automatic image optimization
 - 🔌 Rich plugins
 
 #### 3. Hugo
+
 ```yaml
 # Hugo config
 baseURL: "https://example.com"
 languageCode: "fa"
 theme: "your-theme"
 ```
+
 - ⚡ Fastest SSG
 - 🚀 Go-based
 - 📝 Default Markdown
 - 🎚️ Simple configuration
 
 #### 4. Jekyll
+
 ```yaml
 # Jekyll frontmatter
 ---
@@ -567,24 +588,27 @@ date: 2024-01-01
 tags: [web, programming]
 ---
 ```
+
 - 💎 GitHub Pages support
 - 💎 Ruby-based
 - 📝 Simple to start
 - 🌐 Large community
 
 #### 5. 11ty (Eleventy)
+
 ```javascript
 // Eleventy config
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy('./src/assets')
+  eleventyConfig.addPassthroughCopy("./src/assets")
   return {
     dir: {
-      input: 'src',
-      output: 'public'
-    }
+      input: "src",
+      output: "public",
+    },
   }
 }
 ```
+
 - 🎚️ Very flexible
 - ⚙️ Node.js-based
 - 📚 Simple and lightweight
@@ -599,10 +623,10 @@ const config = {
   theme: {
     typography: {
       header: "Vazirmatn",
-      body: "Vazirmatn"
+      body: "Vazirmatn",
     },
-    colors: colorPalettes.persianAzure
-  }
+    colors: colorPalettes.persianAzure,
+  },
 }
 ```
 
@@ -613,6 +637,7 @@ const config = {
 - 📊 Connection graph
 
 > [!tip] Important Note
+
 - This blog is built exactly with Quartz!
 
 ## Which SSG to Choose?
@@ -699,4 +724,5 @@ npx quartz serve
 ---
 
 > [!quote] Quote
+
 - Simplicity is the ultimate sophistication - Leonardo da Vinci

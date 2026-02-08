@@ -17,16 +17,18 @@ tags:
 ## مهارت‌ها 💪
 
 ### برنامه‌نویسی
+
 ```javascript
 const mySkills = {
   languages: ["JavaScript", "TypeScript", "Python"],
   frameworks: ["React", "Next.js", "Node.js"],
   tools: ["Git", "Docker", "VS Code"],
-  concepts: ["Clean Code", "Testing", "API Design"]
+  concepts: ["Clean Code", "Testing", "API Design"],
 }
 ```
 
 ### مدیریت دانش
+
 - استفاده از [[PKM|مدیریت دانش شخصی]]
 - کار با Obsidian و ابزارهای یادداشت‌برداری
 - سازماندهی اطلاعات مؤثر
@@ -34,9 +36,11 @@ const mySkills = {
 ## پروژه‌ها 🚀
 
 ### وبلاگ شخصی
+
 این وبلاگ را با استفاده از [[Web-Dev/SSG|Quartz]] ساختم که یک SSG عالی برای تبدیل یادداشت‌های Obsidian به وب‌سایت است.
 
 ### سایر پروژه‌ها
+
 - توسعه اپلیکیشن‌های وب
 - مشارکت در پروژه‌های متن‌باز
 - نوشتن مقالات آموزشی
@@ -52,6 +56,7 @@ const mySkills = {
 ## چرا این وبلاگ؟ 🤔
 
 > [!quote]
+
 - تنها راهی که می‌توانیم درک کنیم که چه چیزهایی می‌دانیم، آن را با دیگران به اشتراک بگذاریم. - ریچارد فاینمن
 
 این وبلاگ برای مستندسازی یادگیری‌ها، به اشتراک گذاشتن تجربه‌ها و ایجاد ارتباط با جامعه ایجاد شده است.
@@ -73,16 +78,18 @@ I'm a developer focused on web development and personal knowledge management. I'
 ## Skills 💪
 
 ### Programming
+
 ```javascript
 const mySkills = {
   languages: ["JavaScript", "TypeScript", "Python"],
   frameworks: ["React", "Next.js", "Node.js"],
   tools: ["Git", "Docker", "VS Code"],
-  concepts: ["Clean Code", "Testing", "API Design"]
+  concepts: ["Clean Code", "Testing", "API Design"],
 }
 ```
 
 ### Knowledge Management
+
 - Using [[PKM|Personal Knowledge Management]]
 - Working with Obsidian and note-taking tools
 - Effective information organization
@@ -90,9 +97,11 @@ const mySkills = {
 ## Projects 🚀
 
 ### Personal Blog
+
 I built this blog using [[Web-Dev/SSG|Quartz]], which is an excellent SSG for turning Obsidian notes into a website.
 
 ### Other Projects
+
 - Web application development
 - Open source contributions
 - Educational articles writing
@@ -108,6 +117,7 @@ I built this blog using [[Web-Dev/SSG|Quartz]], which is an excellent SSG for tu
 ## Why This Blog? 🤔
 
 > [!quote]
+
 - The only way to know what we know is to share it with others. - Richard Feynman
 
 This blog was created to document learnings, share experiences, and build connections with the community.

@@ -28,16 +28,19 @@ tags:
 در این وبلاگ به موضوعات مختلفی می‌پردازم:
 
 ### برنامه‌نویسی و توسعه وب 💻
+
 - آموزش‌های برنامه‌نویسی
 - بررسی ابزارها و فریم‌ورک‌ها
 - بهترین شیوه‌های کدنویسی
 
 ### مدیریت دانش شخصی 🧠
+
 - روش‌های یادداشت‌برداری
 - سازماندهی اطلاعات
 - بهبود بهره‌وری
 
 ### سایر موضوعات 🌟
+
 - نقد و بررسی
 - تجربه‌های شخصی
 - ایده‌های خلاقانه
@@ -66,12 +69,12 @@ print(hello_world("دوست"))
 
 ## جدول مقایسه 📊
 
-| ویژگی | وبلاگ شخصی | شبکه اجتماعی |
-|-------|-----------|--------------|
-| کنترل کامل | ✅ | ❌ |
-| مالکیت داده‌ها | ✅ | ❌ |
-| سفارشی‌سازی | ✅ | محدود |
-| تعامل با کاربران | متوسط | زیاد |
+| ویژگی            | وبلاگ شخصی | شبکه اجتماعی |
+| ---------------- | ---------- | ------------ |
+| کنترل کامل       | ✅         | ❌           |
+| مالکیت داده‌ها   | ✅         | ❌           |
+| سفارشی‌سازی      | ✅         | محدود        |
+| تعامل با کاربران | متوسط      | زیاد         |
 
 ## لیست کارها ✅
 
@@ -112,16 +115,19 @@ I am a developer and lifelong learner who loves sharing knowledge. This blog is 
 I cover various topics in this blog:
 
 ### Programming & Web Development 💻
+
 - Programming tutorials
 - Tools and frameworks reviews
 - Best coding practices
 
 ### Personal Knowledge Management 🧠
+
 - Note-taking methods
 - Information organization
 - Productivity improvement
 
 ### Other Topics 🌟
+
 - Reviews and critiques
 - Personal experiences
 - Creative ideas
@@ -150,12 +156,12 @@ print(hello_world("friend"))
 
 ## Comparison Table 📊
 
-| Feature | Personal Blog | Social Media |
-|---------|---------------|--------------|
-| Full Control | ✅ | ❌ |
-| Data Ownership | ✅ | ❌ |
-| Customization | ✅ | Limited |
-| User Engagement | Medium | High |
+| Feature         | Personal Blog | Social Media |
+| --------------- | ------------- | ------------ |
+| Full Control    | ✅            | ❌           |
+| Data Ownership  | ✅            | ❌           |
+| Customization   | ✅            | Limited      |
+| User Engagement | Medium        | High         |
 
 ## Todo List ✅
 
